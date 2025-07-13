@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Voter Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('my1.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-container {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 350px;
+      text-align: center;
+    }
+
+    .login-container h2 {
+      margin-bottom: 25px;
+      color: #333;
+    }
+
+    .login-container input[type="text"],
+    .login-container input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    .login-container input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px;
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: background-color 0.3s;
+    }
+
+    .login-container input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    .show-password {
+      margin-bottom: 15px;
+      font-size: 13px;
+      text-align: left;
+    }
+
+    .forgot {
+      text-align: right;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .forgot a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #666;
+    }
+
+    .error-message {
+      color: red;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    @media screen and (max-width: 480px) {
+      .login-container {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <h2>Voter Login</h2>
+    <form onsubmit="return validateLogin()">
+      <input type="text" id="username" placeholder="Username" required>
+      <input type="password" id="password" placeholder="Password" required>
+      
+      <div class="show-password">
+        <input type="checkbox" onclick="togglePassword()"> Show Password
+      </div>
+
+      <div class="forgot">
+        <a href="#">Forgot password?</a>
+      </div>
+
+      <div class="error-message" id="error-msg"></div>
+
+      <input type="submit" value="Login">
+    </form>
+    <div class="footer">
+      © 2025 Online Voting System
+    </div>
+  </div>
+
+  <script>
+    function togglePassword() {
+      const passwordInput = document.getElementById("password");
+      passwordInput.type = passwordInput.type === "password" ? "text" : "password";
+    }
+
+    function validateLogin() {
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const errorMsg = document.getElementById("error-msg");
+
+      // Example hardcoded credentials (you can change this)
+      const correctUsername = "voter";
+      const correctPassword = "1234";
+
+      if (username === correctUsername && password === correctPassword) {
+        alert("Login successful!");
+        return true; // allow form to submit
+      } else {
+        errorMsg.textContent = "Invalid username or password.";
+        return false; // prevent form submission
+      }
+    }
+  </script>
+
+</body>
+</html>
